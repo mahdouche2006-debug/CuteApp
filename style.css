@@ -36,6 +36,10 @@ body {
 
     background-color: aqua;
     overflow: hidden;
+
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;    /* Center children horizontally */
 }
 
 button, input, select, textarea {
@@ -71,10 +75,12 @@ button, input, select, textarea {
 }
 
 .image {
-    width: 330px;
-    height: 330px;
+    margin-top: 10px;       /* Optional: small gap from the top border */
+    width: 310px;           /* Keep your specific size */
+    height: 310px;          /* Keep your specific size */
     object-fit: cover; 
     border-radius: 18px;
+    flex-shrink: 0;
 }
 
 .app-header {

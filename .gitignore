@@ -5,6 +5,7 @@ node_modules/
 dist/
 release/
 
+todo/
 # Operating System files
 Thumbs.db
 .DS_Store
