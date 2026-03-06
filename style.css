@@ -3,46 +3,50 @@
   src: url("fonts/Pixel Emulator.otf") format("opentype");
 }
 
+/* Using CSS Variables for easy color management */
+:root {
+    --bg-pink: rgb(255, 190, 201);   /* Cherry Blossom */
+    --aqua-mint: #B9F3E4;           /* Primary Accent */
+    --lavender: #EACFFF;            /* Secondary Accent/Hover */
+    --cream: #FFF5E4;               /* Container background */
+    --dusty-mauve: #D4A5A5;           /* Borders and Progress bar */
+    --text-dark: #4A4A4A;           /* Softer than pure black */
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Pixel Emulator', sans-serif;
+    color: var(--text-dark);
 }
 
 body {
     width: 100vw;
     height: 100vh;
     margin: 0;
-
-    background-color: rgb(255, 190, 201);
+    background-color: var(--bg-pink);
     user-select: none;
     -webkit-app-region: drag;
-
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers the .app box horizontally */
+    align-items: center; 
 }
 
 .app {
     margin-top: 60px;
-    margin-left: 20px;
-    margin-right: 20px;
     padding: 10px;
     width: 380px;
-    height: 440px;
-    border-radius: 25px;
-    border: #f47ead 5px solid;
-
-    align-items: center;
-
-    background-color: aqua;
+    height: 460px; /* Slightly taller to fit everything comfortably */
+    border-radius: 15px;
+    border: var(--dusty-mauve) 5px solid;
+    background-color: var(--cream); /* Changed from aqua to Creamy Vanilla */
     overflow: hidden;
-
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: center;    /* Center children horizontally */
+    flex-direction: column; 
+    align-items: center;    
+    box-shadow: 0px 8px 0px rgba(0,0,0,0.1); /* Adds a subtle 3D lift */
 }
 
-button, input, select, textarea {
+button, input {
     -webkit-app-region: no-drag;
     cursor: pointer;
 }
@@ -58,39 +62,43 @@ button, input, select, textarea {
 #closeButton, #minimizeButton {
     width: 40px;
     height: 40px;
-    background-color: #f47ead;
+    background-color: var(--aqua-mint);
     border-radius: 10px;
     border: none;
-    color: wheat;
+    color: var(--dusty-mauve); /* Pink symbols on mint background */
     font-size: x-large;
-    display: flex;             /* Added to center the "X" perfectly */
-    justify-content: center;   /* Horizontal center */
-    align-items: center;       /* Vertical center */
-    cursor: pointer;
-    transition: .5s;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    transition: 0.3s;
 }
 
 #closeButton:hover, #minimizeButton:hover {
-    background-color: aqua;
+    background-color: var(--lavender);
+    transform: translateY(-2px);
 }
 
 .image {
-    margin-top: 10px;       /* Optional: small gap from the top border */
-    width: 310px;           /* Keep your specific size */
-    height: 310px;          /* Keep your specific size */
+    margin-top: 10px;
+    width: 310px;
+    height: 310px;
     object-fit: cover; 
     border-radius: 18px;
+    border: 3px solid var(--aqua-mint); /* Adds a cute frame to the image */
     flex-shrink: 0;
 }
 
 .app-header {
     position: absolute;
     top: 15px;
-    left: 20px; /* Opposite side of your close buttons */
+    left: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
-    -webkit-app-region: drag; /* Allows dragging from the logo area too */
+}
+
+.app-header span {
+    color: var(--dusty-mauve) !important; /* Overriding your inline white style */
 }
 
 .icon {
@@ -98,6 +106,52 @@ button, input, select, textarea {
     width: 40px;
     height: 40px;
     object-fit: contain;
-    /* Prevent the logo from being draggable as an image file */
+    border: 2px solid var(--dusty-mauve);
     -webkit-user-drag: none; 
+}
+
+.progress-container {
+    width: 310px; /* Matched to image width */
+    margin-top: 15px;
+    -webkit-app-region: no-drag;
+}
+
+#progress-bar {
+    width: 100%;
+    cursor: pointer;
+    accent-color: var(--dusty-mauve);
+}
+
+.time-stamps {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px; /* Smaller for pixel font readability */
+    color: var(--text-dark);
+    margin-top: 2px;
+}
+
+.player-controls {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.player-controls button {
+    border: none;
+    border-radius: 10px;
+    background-color: var(--aqua-mint);
+    width: 85px;
+    height: 50px;
+    font-size: 18px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-controls button:hover {
+    transform: scale(1.1);
+    background-color: var(--lavender);
+    box-shadow: 0px 4px 0px var(--dusty-mauve); /* Cute bottom shadow on hover */
 }
