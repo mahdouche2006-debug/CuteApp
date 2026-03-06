@@ -1,13 +1,13 @@
 const playlist = [
     {
-        title: "Main map music",
-        file: "music/main map music.wav",
+        title: "Valse sentimentale",
+        file: "music/Valse-Sentimentale.mp3",
         image: "images/littleBunny.jpg"
     },
     {
-        title: "Peace Piece",
-        file: "music/Bill Evans Peace Piece.mp3",
-        image: "images/icon.png"
+        title: "When the sun rises, the frog sings.",
+        file: "music/When the sun rises, the frog sings.mp3",
+        image: "images/littleFrog.jpg"
     }
 ];
 

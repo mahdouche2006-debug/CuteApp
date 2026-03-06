@@ -5,11 +5,11 @@
 
 /* Using CSS Variables for easy color management */
 :root {
-    --bg-pink: rgb(255, 190, 201);   /* Cherry Blossom */
+    --bg-pink: rgb(255, 190, 201);  /* Cherry Blossom */
     --aqua-mint: #B9F3E4;           /* Primary Accent */
     --lavender: #EACFFF;            /* Secondary Accent/Hover */
     --cream: #FFF5E4;               /* Container background */
-    --dusty-mauve: #D4A5A5;           /* Borders and Progress bar */
+    --dusty-mauve: #D4A5A5;         /* Borders and Progress bar */
     --text-dark: #4A4A4A;           /* Softer than pure black */
 }
 
@@ -42,7 +42,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column; 
-    align-items: center;    
+    align-items: center;
     box-shadow: 0px 8px 0px rgba(0,0,0,0.1); /* Adds a subtle 3D lift */
 }
 
@@ -53,7 +53,7 @@ button, input {
 
 .controls {
     position: absolute;
-    top: 15px;
+    top: 10px;
     right: 15px;
     display: flex;
     gap: 10px;
@@ -90,7 +90,7 @@ button, input {
 
 .app-header {
     position: absolute;
-    top: 15px;
+    top: 10px;
     left: 20px;
     display: flex;
     align-items: center;
@@ -98,7 +98,7 @@ button, input {
 }
 
 .app-header span {
-    color: var(--dusty-mauve) !important; /* Overriding your inline white style */
+    color: var(--dusty-mauve);
 }
 
 .icon {
