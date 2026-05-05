@@ -21,7 +21,24 @@ function loadSong(index) {
     const song = playlist[index];
     audio.src = song.file;
     displayImg.src = song.image;
-    console.log("Now playing: " + song.title);
+
+    const display = document.getElementById('song-title-display');
+    display.innerText = song.title;
+
+    const songTitleContainer = document.querySelector('.song-title-container');
+
+    // If the title is short, stop the animation so it stays centered
+    if (song.title.length < 20) {
+        display.style.animation = 'none';
+        display.style.paddingLeft = '0';
+    } else {
+        // Restart the animation for long titles
+        display.style.animation = 'parade 13s linear infinite';
+        display.style.paddingLeft = '100%';
+        
+    }
+
+    progressBar.value = 0;
 }
 
 // Play/Pause Toggle

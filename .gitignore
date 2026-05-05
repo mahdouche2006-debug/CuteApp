@@ -3,6 +3,7 @@ node_modules/
 
 # Build and Dist folders (Electron-builder outputs)
 dist/
+out/
 release/
 
 todo/
