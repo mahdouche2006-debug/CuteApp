@@ -13,14 +13,29 @@ minbtn.addEventListener('click', () => {
 // Music Player Logic
 
 const audio = document.getElementById('music-player');
-const displayImg = document.querySelector('.image');
+const displayImg = document.getElementById('display-image');
+const displayVideo = document.getElementById('display-video');
 const playBtn = document.getElementById('playBtn');
 const displayPlayBtnImage = document.querySelector('.playBtn')
 
 function loadSong(index) {
     const song = playlist[index];
     audio.src = song.file;
-    displayImg.src = song.image;
+
+    if (song.type === "video") {
+        displayVideo.src = song.media;
+        displayVideo.style.display = "block";
+        displayImg.style.display = "none";
+        if (!audio.paused) {
+            displayVideo.play();
+        }
+    } else {
+        displayImg.src = song.media;
+        displayImg.style.display = "block";
+        displayVideo.style.display = "none";
+        displayVideo.pause();
+        displayVideo.src = "";
+    }
 
     const display = document.getElementById('song-title-display');
     display.innerText = song.title;
@@ -45,10 +60,13 @@ function loadSong(index) {
 playBtn.addEventListener('click', () => {
     if (audio.paused) {
         audio.play();
-        displayPlayBtnImage.src = "images/pauseButton.png"; // Change icon to pause
+        if (!displayVideo.paused) {} // ignore if no video
+        displayVideo.play();
+        displayPlayBtnImage.src = "images/pauseButton.png";
     } else {
         audio.pause();
-        displayPlayBtnImage.src = "images/playButton.png"; // Change icon to play
+        displayVideo.pause();
+        displayPlayBtnImage.src = "images/playButton.png";
     }
 });
 
@@ -98,6 +116,9 @@ audio.addEventListener('timeupdate', () => {
 progressBar.addEventListener('input', () => {
     const seekTime = (progressBar.value / 100) * audio.duration;
     audio.currentTime = seekTime;
+    if (!displayVideo.paused || displayVideo.currentTime > 0) {
+        displayVideo.currentTime = seekTime;
+    }
 });
 
 // Helper function to turn seconds into 0:00 format
@@ -119,7 +140,7 @@ audio.addEventListener('ended', () => {
         currentSongIndex = 0; // Loop to start
     }
     loadSong(currentSongIndex);
-    audio.play();
+    //audio.play();
 });
 
 loadSong(currentSongIndex); // Load the first song on startup
