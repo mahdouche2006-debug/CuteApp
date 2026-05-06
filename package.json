@@ -7,12 +7,17 @@
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "build-mac": "electron-builder --mac"
   },
   "build": {
     "win": {
       "icon": "images/icon.png"
-    }
+    },
+    "appId": "com.yourname.cuteapp",
+      "mac": {
+          "target": "dmg"
+      }
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.11.1",
