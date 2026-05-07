@@ -1,9 +1,9 @@
 const playlist = [
     {
         title: "3id Miled Se3id Amine",
-        file: "music/count me out.mp3",
+        file: "music/3idMiledSe3id.wav",
         type: "video",
-        media: "music/count me out.mp4"
+        media: "music/3idMiledSe3id.mov"
     },
     {
         title: "Valse sentimentale",
@@ -22,6 +22,12 @@ const playlist = [
         file: "music/TheDemonSong.wav",
         type: "image",
         media: "images/Cute_demon.png"
+    },
+    {
+        title: "Funky 8 bit for dor's game.",
+        file: "music/FunkyForMainRoom.wav",
+        type: "image",
+        media: "images/DorPoster.png"
     }
 ];
 

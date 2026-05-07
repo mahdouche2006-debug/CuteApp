@@ -78,10 +78,13 @@ nextBtn.addEventListener('click', () => {
     currentSongIndex++;
     if (currentSongIndex > playlist.length - 1) {
         currentSongIndex = 0; // Loop back to the start
+        loadSong(currentSongIndex);
+        displayPlayBtnImage.src = "images/playButton.png";
+    } else {
+        loadSong(currentSongIndex);
+        audio.play(); // Auto-play after switching
+        displayPlayBtnImage.src = "images/pauseButton.png";
     }
-    loadSong(currentSongIndex);
-    audio.play(); // Auto-play after switching
-    displayPlayBtnImage.src = "images/pauseButton.png";
 });
 
 // Previous Song
@@ -138,9 +141,14 @@ audio.addEventListener('ended', () => {
     currentSongIndex++;
     if (currentSongIndex >= playlist.length) {
         currentSongIndex = 0; // Loop to start
+        loadSong(currentSongIndex);
+        displayPlayBtnImage.src = "images/playButton.png";
     }
-    loadSong(currentSongIndex);
-    //audio.play();
+    else {
+        loadSong(currentSongIndex);
+        audio.play(); // Auto-play after switching
+        displayPlayBtnImage.src = "images/pauseButton.png";
+    }
 });
 
 loadSong(currentSongIndex); // Load the first song on startup
